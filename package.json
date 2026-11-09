@@ -7,7 +7,8 @@
     "dev": "vite-react-ssg dev",
     "build": "vite-react-ssg build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "postbuild": "node scripts/copy-404.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.5",

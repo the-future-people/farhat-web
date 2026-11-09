@@ -18,6 +18,8 @@ export const routes = [
       { path: 'our-work', element: <OurWork /> },
       { path: 'about', element: <About /> },
       { path: 'contact', element: <Contact /> },
+      // built to dist/404/index.html, then copied to dist/404.html for Vercel (see postbuild)
+      { path: '404', element: <NotFound /> },
       { path: '*', element: <NotFound /> },
     ],
   },
