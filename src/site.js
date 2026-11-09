@@ -61,15 +61,25 @@ export const branches = [
     address: '63 Westlands Ave, Accra',
     gps: 'GE-328-6296',
     open: true,
-    mapsHref:
-      'https://www.google.com/maps/search/?api=1&query=' +
-      encodeURIComponent('Farhat Printing Press, 63 Westlands Ave, Accra'),
+    // Exact pin for the map. In Google Maps: right-click the shop → click the numbers to copy them.
+    // e.g. coords: [5.6512, -0.1987]. While null, the Contact page shows a directions card instead of a map.
+    coords: null,
   },
   { id: 'madina', name: 'Madina Branch', area: 'Madina, Accra', open: false },
   { id: 'kwashieman', name: 'Kwashieman Branch', area: 'Kwashieman, Accra', open: false },
 ]
 
 export const mainBranch = branches[0]
+
+// Directions link: the exact pin once coords are set, otherwise the street address.
+export function mapsHref(b = mainBranch) {
+  const q = b.coords ? b.coords.join(',') : b.address
+  return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q)
+}
+
+export function mapEmbedSrc(b = mainBranch) {
+  return b.coords ? `https://www.google.com/maps?q=${b.coords.join(',')}&z=17&output=embed` : null
+}
 
 // No own delivery — customers send a rider to collect.
 export const collection =
@@ -183,6 +193,13 @@ export const solutions = [
   { id: 'personal', name: 'Personal', summary: 'Everyday prints, documents, photos and gifts.' },
   { id: 'tender', name: 'Tender documents', summary: 'Formatting, printing, binding and packaging for tender submissions.' },
 ]
+
+// Our Work gallery. Empty until real jobs are photographed (with the client's OK).
+// Photos go in public/work/ as .webp, about 1200px wide. Category = a serviceCategories id.
+// Example:
+// { id: 'school-banner', title: 'School admission banner', category: 'large-format',
+//   summary: '10 x 4 ft flexy banner with eyelets', image: '/work/school-banner.webp' },
+export const work = []
 
 export const nav = [
   { to: '/', label: 'Home' },

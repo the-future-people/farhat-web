@@ -4,7 +4,7 @@ import Logo from './Logo.jsx'
 import OpenNow from './OpenNow.jsx'
 import {
   company, phone, telHref, waHref, hours, fmtTime,
-  mainBranch, services, footerLinks, collection,
+  mainBranch, mapsHref, services, footerLinks, collection,
 } from '../site.js'
 
 function FooterLink({ link }) {
@@ -66,7 +66,7 @@ export default function Footer() {
           <ul className="mt-4 space-y-3.5 text-sm text-white/70">
             <li className="flex gap-3">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-600" aria-hidden="true" />
-              <a href={mainBranch.mapsHref} target="_blank" rel="noopener" className="hover:text-white">
+              <a href={mapsHref()} target="_blank" rel="noopener" className="hover:text-white">
                 {mainBranch.address}
                 <span className="block text-white/45">GPS {mainBranch.gps}</span>
               </a>

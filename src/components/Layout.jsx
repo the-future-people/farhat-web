@@ -1,6 +1,7 @@
 import { Outlet, ScrollRestoration } from 'react-router-dom'
 import Header from './Header.jsx'
 import Footer from './Footer.jsx'
+import ScrollToHash from './ScrollToHash.jsx'
 
 export default function Layout() {
   return (
@@ -17,6 +18,7 @@ export default function Layout() {
       </main>
       <Footer />
       <ScrollRestoration />
+      <ScrollToHash />
     </div>
   )
 }

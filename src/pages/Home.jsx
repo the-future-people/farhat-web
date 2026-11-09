@@ -7,7 +7,7 @@ import Seo from '../components/Seo.jsx'
 import RollUpBanner from '../components/RollUpBanner.jsx'
 import CtaBanner from '../components/CtaBanner.jsx'
 import OpenNow from '../components/OpenNow.jsx'
-import { waHref, stats, hours, fmtTime, mainBranch, collection } from '../site.js'
+import { waHref, stats, hours, fmtTime, mainBranch, mapsHref, collection } from '../site.js'
 
 const strip = [
   [Printer, 'Printing', 'Colour & B/W', '/services#printing'],
@@ -202,7 +202,7 @@ export default function Home() {
               </span>
             </p>
             <a
-              href={mainBranch.mapsHref}
+              href={mapsHref()}
               target="_blank"
               rel="noopener"
               className="mt-5 inline-flex items-center gap-2 font-semibold text-brand-600 hover:text-brand-700"
