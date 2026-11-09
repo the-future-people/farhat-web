@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom'
 import {
   ArrowRight, BookOpen, Camera, CheckCircle2, Clock, FileCheck2, Handshake, Layers, MapPin,
-  MessageCircle, Package, Presentation, Printer, ReceiptText, ShieldCheck, Shirt, Store,
+  MessageCircle, Package, Presentation, Printer, ReceiptText, ShieldCheck, Shirt, ShoppingBag, Store,
 } from 'lucide-react'
 import Seo from '../components/Seo.jsx'
 import CtaBanner from '../components/CtaBanner.jsx'
 import OpenNow from '../components/OpenNow.jsx'
-import { waHref, stats, hours, fmtTime, mainBranch, mapsHref, collection } from '../site.js'
+import { waHref, orderUrl, stats, hours, fmtTime, mainBranch, mapsHref, collection } from '../site.js'
 
 const strip = [
   [Printer, 'Printing', 'Colour & B/W', '/services#printing'],
@@ -85,12 +85,13 @@ export default function Home() {
                 <Printer className="h-5 w-5" aria-hidden="true" />
                 Send your print job
               </a>
-              <Link
-                to="/services"
+<a
+                href={orderUrl}
                 className="inline-flex items-center gap-2 rounded-xl border border-black/15 bg-white px-6 py-3.5 font-semibold text-ink hover:border-black/30"
               >
-                Explore services
-              </Link>
+                <ShoppingBag className="h-5 w-5 text-brand-600" aria-hidden="true" />
+                Order online
+              </a>
             </div>
             <ul className="mt-10 flex flex-wrap gap-x-7 gap-y-4">
               {trust.map(([Icon, label]) => (

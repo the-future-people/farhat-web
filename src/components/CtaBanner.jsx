@@ -1,5 +1,5 @@
 import { Printer } from 'lucide-react'
-import { waHref } from '../site.js'
+import { waHref, orderUrl } from '../site.js'
 
 // Red closing banner used at the bottom of most pages.
 export default function CtaBanner({
@@ -20,6 +20,7 @@ export default function CtaBanner({
             <h2 className="font-display text-3xl font-extrabold sm:text-4xl">{title}</h2>
             <p className="mt-2 text-lg text-white/85">{text}</p>
           </div>
+          <div className="flex shrink-0 flex-col items-start gap-3 sm:items-end">
           <a
             href={waHref()}
             target="_blank"
@@ -29,6 +30,10 @@ export default function CtaBanner({
             <Printer className="h-5 w-5 text-brand-600" aria-hidden="true" />
             {button}
           </a>
+          <a href={orderUrl} className="text-sm font-semibold text-white/90 underline-offset-4 hover:underline">
+            or order online and pay
+          </a>
+          </div>
         </div>
       </div>
     </section>

@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import {
   ArrowUpRight, BookOpen, Camera, Clock, Layers, MessageCircle, Newspaper, Package,
-  PanelsTopLeft, Plus, Presentation, Printer, ShieldCheck, Shirt, Sticker, Store,
+  PanelsTopLeft, Plus, Presentation, Printer, ShieldCheck, Shirt, ShoppingBag, Sticker, Store,
 } from 'lucide-react'
 import Seo from '../components/Seo.jsx'
 import CtaBanner from '../components/CtaBanner.jsx'
-import { services, serviceCategories, alsoAvailable, waHref, collection } from '../site.js'
+import { services, serviceCategories, alsoAvailable, waHref, orderUrl, collection } from '../site.js'
 
 const icons = {
   printing: Printer,
@@ -165,6 +165,23 @@ export default function Services() {
             <ServiceCard key={s.id} s={s} highlighted={highlight === s.id} />
           ))}
         </ul>
+
+        {/* ── Order online ───────────────────────────── */}
+        <div className="mt-10 flex flex-col gap-5 rounded-2xl bg-ink p-7 text-white sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex gap-4">
+            <ShoppingBag className="h-8 w-8 shrink-0 text-brand-600" strokeWidth={1.6} aria-hidden="true" />
+            <div>
+              <h2 className="font-display text-xl font-bold">Know what you want? Order online.</h2>
+              <p className="mt-1 text-white/70">Upload your file, see the price, pay by Mobile Money or card, and track it until it's ready.</p>
+            </div>
+          </div>
+          <a
+            href={orderUrl}
+            className="inline-flex shrink-0 items-center justify-center rounded-xl bg-brand-600 px-6 py-3 font-semibold whitespace-nowrap hover:bg-brand-700"
+          >
+            Order online
+          </a>
+        </div>
 
         {/* ── Also available + good to know ───────────── */}
         <div className="mt-14 grid gap-5 lg:grid-cols-2">

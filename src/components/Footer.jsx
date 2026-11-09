@@ -4,7 +4,7 @@ import Logo from './Logo.jsx'
 import OpenNow from './OpenNow.jsx'
 import {
   company, phone, telHref, waHref, hours, fmtTime,
-  mainBranch, mapsHref, services, footerLinks, collection,
+  mainBranch, mapsHref, orderUrl, services, footerLinks, collection,
 } from '../site.js'
 
 function FooterLink({ link }) {
@@ -49,6 +49,7 @@ export default function Footer() {
         <div>
           <h2 className="font-display text-sm font-bold">Company</h2>
           <ul className="mt-4 space-y-2.5 text-sm">
+            <li><FooterLink link={{ href: orderUrl, label: 'Order online' }} /></li>
             <li><FooterLink link={{ href: '/about', label: 'About us' }} /></li>
             <li><FooterLink link={{ href: '/solutions', label: 'Solutions' }} /></li>
             {footerLinks.map((l) => (

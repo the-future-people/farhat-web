@@ -20,6 +20,9 @@ export const phone = {
 
 export const telHref = `tel:${phone.e164}`
 
+// Print Octos, the online ordering site. Becomes order.farhatprintingpress.com at cutover.
+export const orderUrl = 'https://print-octos.vercel.app'
+
 // Opens a WhatsApp chat with Octos, message prefilled.
 export function waHref(message = "Hi Farhat, I'd like to send a print job.") {
   return `https://wa.me/${phone.e164.replace('+', '')}?text=${encodeURIComponent(message)}`

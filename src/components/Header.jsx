@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { ChevronDown, Menu, Phone, Printer, X } from 'lucide-react'
+import { ChevronDown, Menu, Phone, Printer, ShoppingBag, X } from 'lucide-react'
 import Logo from './Logo.jsx'
-import { nav, phone, telHref, waHref, services, solutions } from '../site.js'
+import { nav, phone, telHref, waHref, orderUrl, services, solutions } from '../site.js'
 
 // Which top-level items get a dropdown, and what's in it.
 const submenus = {
@@ -171,6 +171,13 @@ function MobileMenu({ onClose }) {
         <div className="mt-6 grid gap-3">
           <CtaButton className="flex py-3.5 text-base" />
           <a
+            href={orderUrl}
+            className="inline-flex items-center justify-center gap-2 rounded-lg border border-black/15 py-3.5 font-semibold text-ink"
+          >
+            <ShoppingBag className="h-5 w-5 text-brand-600" aria-hidden="true" />
+            Order online and pay
+          </a>
+          <a
             href={telHref}
             className="inline-flex items-center justify-center gap-2 rounded-lg border border-black/15 py-3.5 font-semibold text-ink"
           >
@@ -219,10 +226,17 @@ export default function Header() {
         <div className="ml-auto flex items-center gap-3 lg:ml-4">
           <a
             href={telHref}
-            className="hidden items-center gap-2 rounded-full border border-black/10 px-4 py-2 text-sm font-semibold text-ink hover:border-black/25 xl:inline-flex"
+            className="hidden items-center gap-2 rounded-full border border-black/10 px-4 py-2 text-sm font-semibold whitespace-nowrap text-ink hover:border-black/25 2xl:inline-flex"
           >
             <Phone className="h-4 w-4 text-brand-600" aria-hidden="true" />
             {phone.display}
+          </a>
+          <a
+            href={orderUrl}
+            className="hidden items-center gap-2 rounded-lg border border-black/15 px-4 py-2.5 text-sm font-semibold whitespace-nowrap text-ink hover:border-black/30 md:inline-flex"
+          >
+            <ShoppingBag className="h-4 w-4 text-brand-600" aria-hidden="true" />
+            Order online
           </a>
           <CtaButton className="hidden text-sm md:inline-flex" />
           <button
