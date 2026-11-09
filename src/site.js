@@ -173,6 +173,17 @@ export const alsoAvailable = [
   'Offset printing from 1,000 pieces',
 ]
 
+// Solutions page sections (also the Solutions dropdown).
+export const solutions = [
+  { id: 'education', name: 'Education', summary: 'Printing for schools, colleges and training institutions.' },
+  { id: 'corporate', name: 'Corporate', summary: 'Branded print and marketing materials for businesses.' },
+  { id: 'events', name: 'Events', summary: 'Banners, backdrops, programmes and full event branding.' },
+  { id: 'retail', name: 'Retail & Packaging', summary: 'Boxes, bags, labels and product packaging.' },
+  { id: 'organisations', name: 'Organisations', summary: 'Print and branding for NGOs, churches and associations.' },
+  { id: 'personal', name: 'Personal', summary: 'Everyday prints, documents, photos and gifts.' },
+  { id: 'tender', name: 'Tender documents', summary: 'Formatting, printing, binding and packaging for tender submissions.' },
+]
+
 export const nav = [
   { to: '/', label: 'Home' },
   { to: '/services', label: 'Services' },
