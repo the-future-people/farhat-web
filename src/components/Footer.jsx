@@ -1,28 +1,11 @@
-import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Clock, Mail, MapPin, Phone } from 'lucide-react'
 import Logo from './Logo.jsx'
+import OpenNow from './OpenNow.jsx'
 import {
-  company, phone, telHref, waHref, hours, fmtTime, isOpenNow,
+  company, phone, telHref, waHref, hours, fmtTime,
   mainBranch, services, footerLinks, collection,
 } from '../site.js'
-
-// Shown only in the browser — at build time we can't know if the shop is open.
-function OpenNow() {
-  const [open, setOpen] = useState(null)
-  useEffect(() => {
-    setOpen(isOpenNow())
-    const t = setInterval(() => setOpen(isOpenNow()), 60_000)
-    return () => clearInterval(t)
-  }, [])
-  if (open === null) return null
-  return (
-    <span className={`inline-flex items-center gap-1.5 text-sm font-medium ${open ? 'text-emerald-400' : 'text-white/50'}`}>
-      <span className={`h-2 w-2 rounded-full ${open ? 'bg-emerald-400' : 'bg-white/40'}`} />
-      {open ? 'Open now' : 'Closed now'}
-    </span>
-  )
-}
 
 function FooterLink({ link }) {
   const cls = 'text-white/70 hover:text-white'
@@ -78,7 +61,7 @@ export default function Footer() {
         <div>
           <div className="flex items-center justify-between gap-3">
             <h2 className="font-display text-sm font-bold">Visit us</h2>
-            <OpenNow />
+            <OpenNow onDark />
           </div>
           <ul className="mt-4 space-y-3.5 text-sm text-white/70">
             <li className="flex gap-3">
