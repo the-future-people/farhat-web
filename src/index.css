@@ -18,3 +18,12 @@
 body {
   @apply bg-white font-sans text-ink antialiased;
 }
+
+/* Desktop scale: everything (text, spacing, icons, widths) is in rem,
+   so 90% here shrinks the whole site evenly, like browser zoom at 90%.
+   Phones and tablets keep the full 100% size for readability. */
+@media (min-width: 1024px) {
+  html {
+    font-size: 90%;
+  }
+}
