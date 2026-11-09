@@ -1,0 +1,22 @@
+import { Head } from 'vite-react-ssg'
+
+const SITE = 'https://farhatprintingpress.com'
+const NAME = 'Farhat Printing Press'
+
+// One place for each page's title, description and link-preview tags.
+export default function Seo({ title, description, path = '/' }) {
+  const fullTitle = title ? `${title} · ${NAME}` : NAME
+  const url = SITE + path
+  return (
+    <Head>
+      <title>{fullTitle}</title>
+      <meta name="description" content={description} />
+      <link rel="canonical" href={url} />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content={NAME} />
+      <meta property="og:title" content={fullTitle} />
+      <meta property="og:description" content={description} />
+      <meta property="og:url" content={url} />
+    </Head>
+  )
+}
