@@ -37,16 +37,16 @@ export default function Home() {
       <Seo description="Large-format printing, branding, packaging and everyday print in Accra. Send your print job on WhatsApp." />
 
       {/* ── Hero ───────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-[#fefbfa]">
+      <section className="relative overflow-hidden bg-white">
         {/* product photo: fills the right side on desktop, fades into the cream at its left edge */}
         <img
           src="/hero.webp"
           alt="Farhat-branded bag, polo shirt, mug, box, books and a roll-up banner"
-          width="1032"
-          height="708"
+          width="1536"
+          height="1024"
           fetchPriority="high"
-          className="absolute top-0 right-0 bottom-0 hidden h-full w-[56%] object-cover object-[80%_50%] lg:block"
-          style={{ maskImage: 'linear-gradient(to right, transparent 0, #000 12%)', WebkitMaskImage: 'linear-gradient(to right, transparent 0, #000 12%)' }}
+          className="absolute top-0 right-0 bottom-0 hidden h-full w-[58%] object-cover object-[85%_50%] lg:block 2xl:object-[40%_50%]"
+          style={{ maskImage: 'linear-gradient(to right, transparent 0, #000 18%)', WebkitMaskImage: 'linear-gradient(to right, transparent 0, #000 18%)' }}
         />
         <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-5 pt-12 pb-16 lg:grid-cols-[1.1fr_1fr] lg:gap-12 lg:px-8 lg:pt-20 lg:pb-28">
           <div>
@@ -106,8 +106,8 @@ export default function Home() {
           <img
             src="/hero.webp"
             alt=""
-            width="1032"
-            height="708"
+            width="1536"
+            height="1024"
             className="-mx-5 w-[calc(100%+2.5rem)] max-w-none lg:hidden"
             style={{ maskImage: 'linear-gradient(to bottom, transparent 0, #000 12%)', WebkitMaskImage: 'linear-gradient(to bottom, transparent 0, #000 12%)' }}
           />
