@@ -4,7 +4,6 @@ import {
   MessageCircle, Package, Presentation, Printer, ReceiptText, ShieldCheck, Shirt, Store,
 } from 'lucide-react'
 import Seo from '../components/Seo.jsx'
-import RollUpBanner from '../components/RollUpBanner.jsx'
 import CtaBanner from '../components/CtaBanner.jsx'
 import OpenNow from '../components/OpenNow.jsx'
 import { waHref, stats, hours, fmtTime, mainBranch, mapsHref, collection } from '../site.js'
@@ -38,13 +37,18 @@ export default function Home() {
       <Seo description="Large-format printing, branding, packaging and everyday print in Accra. Send your print job on WhatsApp." />
 
       {/* ── Hero ───────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-paper">
-        {/* red sweep behind the banner */}
-        <div
-          aria-hidden="true"
-          className="absolute top-0 right-[-30%] bottom-0 hidden w-[75%] rounded-l-[50%] bg-gradient-to-br from-brand-600 to-brand-800 lg:block"
+      <section className="relative overflow-hidden bg-[#fefbfa]">
+        {/* product photo: fills the right side on desktop, fades into the cream at its left edge */}
+        <img
+          src="/hero.webp"
+          alt="Farhat-branded bag, polo shirt, mug, box, books and a roll-up banner"
+          width="1032"
+          height="708"
+          fetchPriority="high"
+          className="absolute top-0 right-0 bottom-0 hidden h-full w-[56%] object-cover object-[80%_50%] lg:block"
+          style={{ maskImage: 'linear-gradient(to right, transparent 0, #000 12%)', WebkitMaskImage: 'linear-gradient(to right, transparent 0, #000 12%)' }}
         />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 pt-12 pb-20 lg:grid-cols-[1.1fr_1fr] lg:px-8 lg:pt-20 lg:pb-28">
+        <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-5 pt-12 pb-16 lg:grid-cols-[1.1fr_1fr] lg:gap-12 lg:px-8 lg:pt-20 lg:pb-28">
           <div>
             <p className="flex items-center gap-3 text-sm font-bold text-brand-600">
               <span className="h-0.5 w-8 rounded-full bg-brand-600" />
@@ -98,13 +102,15 @@ export default function Home() {
             </ul>
           </div>
 
-          <div className="relative flex justify-center py-6 lg:py-0">
-            {/* on phones the red sweep becomes a soft disc behind the banner */}
-            <div aria-hidden="true" className="absolute inset-x-0 top-14 bottom-2 rounded-[3rem] bg-gradient-to-br from-brand-600 to-brand-800 lg:hidden" />
-            <div className="relative">
-              <RollUpBanner />
-            </div>
-          </div>
+          {/* phones and tablets: the same photo, in the flow under the text */}
+          <img
+            src="/hero.webp"
+            alt=""
+            width="1032"
+            height="708"
+            className="-mx-5 w-[calc(100%+2.5rem)] max-w-none lg:hidden"
+            style={{ maskImage: 'linear-gradient(to bottom, transparent 0, #000 12%)', WebkitMaskImage: 'linear-gradient(to bottom, transparent 0, #000 12%)' }}
+          />
         </div>
       </section>
 
