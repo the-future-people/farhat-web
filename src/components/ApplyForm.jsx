@@ -110,7 +110,7 @@ export default function ApplyForm({ vacancy = null }) {
         <h3 className="mt-4 font-display text-2xl font-extrabold">Application received</h3>
         <p className="mx-auto mt-2 max-w-sm text-ink/65">
           Thank you, {f.first.trim()}. Our HR team will review it and contact you by{' '}
-          {f.channel === 'EMAIL' ? 'email' : 'SMS'}.
+          {f.channel === 'EMAIL' ? 'email' : f.channel === 'WHATSAPP' ? 'WhatsApp' : 'SMS'}.
         </p>
       </div>
     )
@@ -160,8 +160,8 @@ export default function ApplyForm({ vacancy = null }) {
 
         <fieldset>
           <legend className="text-sm font-semibold">How should HR contact you?</legend>
-          <div className="mt-2 flex gap-2">
-            {[['SMS', 'SMS'], ['EMAIL', 'Email']].map(([value, label]) => (
+          <div className="mt-2 flex flex-wrap gap-2">
+            {[['SMS', 'SMS'], ['WHATSAPP', 'WhatsApp'], ['EMAIL', 'Email']].map(([value, label]) => (
               <button
                 key={value} type="button" aria-pressed={f.channel === value}
                 onClick={() => setF((v) => ({ ...v, channel: value }))}
