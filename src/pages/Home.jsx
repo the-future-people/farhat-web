@@ -38,17 +38,8 @@ export default function Home() {
 
       {/* ── Hero ───────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-white">
-        {/* product photo: fills the right side on desktop, fades into the cream at its left edge */}
-        <img
-          src="/hero.webp"
-          alt="Farhat-branded bag, polo shirt, mug, box, books and a roll-up banner"
-          width="1536"
-          height="1024"
-          fetchPriority="high"
-          className="absolute top-0 right-0 bottom-0 hidden h-full w-[58%] object-cover object-[85%_50%] lg:block 2xl:object-[40%_50%]"
-          style={{ maskImage: 'linear-gradient(to right, transparent 0, #000 18%)', WebkitMaskImage: 'linear-gradient(to right, transparent 0, #000 18%)' }}
-        />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-5 pt-12 pb-16 lg:grid-cols-[1.1fr_1fr] lg:gap-12 lg:px-8 lg:pt-20 lg:pb-28">
+
+        <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-5 pt-12 pb-16 lg:grid-cols-[1fr_1.15fr] lg:gap-10 lg:px-8 lg:pt-20 lg:pb-28">
           <div>
             <p className="flex items-center gap-3 text-sm font-bold text-brand-600">
               <span className="h-0.5 w-8 rounded-full bg-brand-600" />
@@ -103,14 +94,20 @@ export default function Home() {
             </ul>
           </div>
 
-          {/* phones and tablets: the same photo, in the flow under the text */}
+          {/* product photo: sits in the right column of the centred container; edges fade into the white */}
           <img
             src="/hero.webp"
-            alt=""
+            alt="Farhat-branded bag, polo shirt, mug, box, books and a roll-up banner"
             width="1536"
             height="1024"
-            className="-mx-5 w-[calc(100%+2.5rem)] max-w-none lg:hidden"
-            style={{ maskImage: 'linear-gradient(to bottom, transparent 0, #000 12%)', WebkitMaskImage: 'linear-gradient(to bottom, transparent 0, #000 12%)' }}
+            fetchPriority="high"
+            className="-mx-5 w-[calc(100%+2.5rem)] max-w-none lg:mx-0 lg:w-full lg:max-w-full"
+            style={{
+              maskImage: 'linear-gradient(to bottom, transparent 0, #000 8%, #000 92%, transparent 100%), linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%)',
+              WebkitMaskImage: 'linear-gradient(to bottom, transparent 0, #000 8%, #000 92%, transparent 100%), linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%)',
+              maskComposite: 'intersect',
+              WebkitMaskComposite: 'source-in',
+            }}
           />
         </div>
       </section>
