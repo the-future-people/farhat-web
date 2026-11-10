@@ -128,6 +128,9 @@ export default function Careers() {
 
       {/* The careers page runs dark: black canvas, dark cards, red accents */}
       <div className="bg-[#121212] text-white">
+      {/* Desktop: the whole careers page sits 10% smaller than the rest of the site.
+          zoom scales text, spacing, cards and widths together. Phones keep full size. */}
+      <div className="lg:[zoom:0.9]">
       {/* ── Hero ───────────────────────────────────────── */}
       <section className="border-b border-white/10">
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 pt-12 pb-14 lg:grid-cols-[1.4fr_1fr] lg:px-8 lg:pt-14 lg:pb-16">
@@ -268,6 +271,7 @@ export default function Careers() {
           </div>
         )}
       </section>
+      </div>
       </div>
     </>
   )
