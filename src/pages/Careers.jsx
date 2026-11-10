@@ -65,31 +65,31 @@ function RoleCard({ v }) {
     <li>
       <Link
         to={roleHref(v)}
-        className="group flex h-full flex-col rounded-2xl border border-black/10 bg-white p-5 transition-shadow hover:border-brand-600/30 hover:shadow-lg hover:shadow-black/5"
+        className="group flex h-full flex-col rounded-2xl border border-white/10 bg-[#1c1c1c] p-5 transition-colors hover:border-brand-600/60 hover:bg-[#222]"
       >
         <div className="flex items-start justify-between gap-3">
-          <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50">
+          <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-600/15">
             <Icon className="h-5 w-5 text-brand-600" aria-hidden="true" />
           </span>
-          <span className="text-xs text-ink/45">{v.team_label || TEAM_LABEL[v.team || '']}</span>
+          <span className="text-xs text-white/45">{v.team_label || TEAM_LABEL[v.team || '']}</span>
         </div>
-        <h3 className="mt-4 font-display text-lg font-bold">{v.title}</h3>
-        {v.description && <p className="mt-1 text-sm leading-relaxed text-ink/60">{firstSentence(v.description)}</p>}
+        <h3 className="mt-4 font-display text-lg font-bold text-white">{v.title}</h3>
+        {v.description && <p className="mt-1 text-sm leading-relaxed text-white/60">{firstSentence(v.description)}</p>}
         <div className="mt-4 flex flex-wrap gap-1.5">
-          <span className="rounded-full bg-paper px-2.5 py-1 text-xs text-ink/65">{TYPE_LABEL[v.employment_type] || v.employment_type}</span>
-          <span className="rounded-full bg-paper px-2.5 py-1 text-xs text-ink/65">
+          <span className="rounded-full bg-white/10 px-2.5 py-1 text-xs text-white/70">{TYPE_LABEL[v.employment_type] || v.employment_type}</span>
+          <span className="rounded-full bg-white/10 px-2.5 py-1 text-xs text-white/70">
             {v.positions_available} position{v.positions_available === 1 ? '' : 's'}
           </span>
-          <span className="rounded-full bg-paper px-2.5 py-1 text-xs text-ink/65">{(v.branch_name || 'Any branch').replace(/ Branch$/, '')}</span>
+          <span className="rounded-full bg-white/10 px-2.5 py-1 text-xs text-white/70">{(v.branch_name || 'Any branch').replace(/ Branch$/, '')}</span>
           {closingSoon && (
-            <span className="rounded-full bg-amber-100 px-2.5 py-1 text-xs font-medium text-amber-800">
+            <span className="rounded-full bg-amber-400/15 px-2.5 py-1 text-xs font-medium text-amber-300">
               {d === 0 ? 'Closes today' : `Closes in ${d} day${d === 1 ? '' : 's'}`}
             </span>
           )}
         </div>
         <div className="min-h-4 flex-1" />
-        <div className="flex items-center justify-between gap-3 border-t border-black/10 pt-4 text-sm">
-          <span className={v.pay_text ? 'font-medium text-ink/75' : 'text-ink/45'}>{v.pay_text || 'Pay at interview'}</span>
+        <div className="flex items-center justify-between gap-3 border-t border-white/10 pt-4 text-sm">
+          <span className={v.pay_text ? 'font-medium text-white/80' : 'text-white/45'}>{v.pay_text || 'Pay at interview'}</span>
           <span className="inline-flex shrink-0 items-center gap-1 font-semibold text-brand-600">
             Apply <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
           </span>
@@ -126,8 +126,10 @@ export default function Careers() {
         path="/careers"
       />
 
+      {/* The careers page runs dark: black canvas, dark cards, red accents */}
+      <div className="bg-[#121212] text-white">
       {/* ── Hero ───────────────────────────────────────── */}
-      <section className="bg-paper">
+      <section className="border-b border-white/10">
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 pt-12 pb-14 lg:grid-cols-[1.4fr_1fr] lg:px-8 lg:pt-14 lg:pb-16">
           <div>
             <p className="flex items-center gap-3 text-sm font-bold text-brand-600">
@@ -137,30 +139,30 @@ export default function Careers() {
             <h1 className="mt-5 font-display text-5xl leading-[1.02] font-extrabold tracking-tight sm:text-6xl">
               Build your career <span className="text-brand-600">in print.</span>
             </h1>
-            <p className="mt-5 max-w-xl text-lg text-ink/70">
+            <p className="mt-5 max-w-xl text-lg text-white/70">
               Join the team at Westland, Accra. Learn on modern machines and grow with us as new branches open.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#roles" className="rounded-xl bg-brand-600 px-6 py-3.5 font-semibold text-white shadow-lg shadow-brand-600/20 hover:bg-brand-700">
+              <a href="#roles" className="rounded-xl bg-brand-600 px-6 py-3.5 font-semibold text-white hover:bg-brand-700">
                 See open roles
               </a>
-              <a href="#hiring" className="rounded-xl border border-black/15 bg-white px-6 py-3.5 font-semibold hover:border-black/30">
+              <a href="#hiring" className="rounded-xl border border-white/20 px-6 py-3.5 font-semibold text-white hover:border-white/40 hover:bg-white/5">
                 How hiring works
               </a>
             </div>
           </div>
 
-          <div className="rounded-3xl bg-brand-600 p-7 text-white sm:p-8">
-            <p className="font-display text-6xl font-extrabold leading-none">{ready ? all.length : '–'}</p>
-            <p className="mt-2 text-white/85">
+          <div className="rounded-3xl bg-brand-50 p-7 text-brand-800 sm:p-8">
+            <p className="font-display text-6xl font-extrabold leading-none text-brand-700">{ready ? all.length : '–'}</p>
+            <p className="mt-2 text-brand-700">
               {ready
                 ? `open role${all.length === 1 ? '' : 's'} · ${positions} position${positions === 1 ? '' : 's'}`
                 : 'open roles'}
             </p>
-            <ul className="mt-6 grid gap-3 border-t border-white/20 pt-5">
+            <ul className="mt-6 grid gap-3 border-t border-brand-700/15 pt-5">
               {[[GraduationCap, 'Paid on-the-job training'], [Shirt, 'Staff uniform'], [TrendingUp, 'Grow as new branches open']].map(([Icon, label]) => (
                 <li key={label} className="flex items-center gap-3 font-medium">
-                  <Icon className="h-5 w-5 text-white/85" aria-hidden="true" />
+                  <Icon className="h-5 w-5 text-brand-600" aria-hidden="true" />
                   {label}
                 </li>
               ))}
@@ -182,7 +184,7 @@ export default function Careers() {
                     <button
                       key={t || 'other'} type="button" aria-pressed={team === t} onClick={() => setTeam(t)}
                       className={`shrink-0 rounded-full border px-4 py-2 text-sm font-medium ${
-                        team === t ? 'border-brand-600 bg-brand-600 text-white' : 'border-black/15 bg-white text-ink/75 hover:border-black/30'
+                        team === t ? 'border-brand-600 bg-brand-600 text-white' : 'border-white/20 text-white/75 hover:border-white/40'
                       }`}
                     >
                       {t === 'ALL' ? 'All' : TEAM_LABEL[t]} {count}
@@ -194,12 +196,12 @@ export default function Careers() {
           )}
         </div>
 
-        {state.status === 'loading' && <p className="mt-8 text-ink/55">Loading open roles…</p>}
+        {state.status === 'loading' && <p className="mt-8 text-white/55">Loading open roles…</p>}
         {state.status === 'error' && (
-          <p className="mt-8 text-ink/65">We couldn't load the open roles right now. Refresh the page, or try again later.</p>
+          <p className="mt-8 text-white/65">We couldn't load the open roles right now. Refresh the page, or try again later.</p>
         )}
         {ready && all.length === 0 && (
-          <p className="mt-8 max-w-xl text-ink/65">
+          <p className="mt-8 max-w-xl text-white/65">
             There are no open roles right now. You can still send a general application below, and HR will keep it on file.
           </p>
         )}
@@ -213,14 +215,14 @@ export default function Careers() {
 
       {/* ── Why Farhat ─────────────────────────────────── */}
       <section className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="rounded-3xl border border-black/10 p-7 sm:p-10">
+        <div className="rounded-3xl border border-white/10 bg-[#1c1c1c] p-7 sm:p-10">
           <h2 className="font-display text-2xl font-extrabold sm:text-3xl">Why work at Farhat</h2>
           <ul className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {perks.map(([Icon, title, text]) => (
               <li key={title}>
                 <Icon className="h-8 w-8 text-brand-600" strokeWidth={1.6} aria-hidden="true" />
                 <p className="mt-3 font-semibold">{title}</p>
-                <p className="mt-1 text-sm leading-relaxed text-ink/60">{text}</p>
+                <p className="mt-1 text-sm leading-relaxed text-white/60">{text}</p>
               </li>
             ))}
           </ul>
@@ -232,10 +234,10 @@ export default function Careers() {
         <h2 className="font-display text-2xl font-extrabold sm:text-3xl">How hiring works</h2>
         <ol className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map(([title, text], i) => (
-            <li key={title} className={`border-t-2 pt-4 ${i === 0 ? 'border-brand-600' : 'border-black/10'}`}>
+            <li key={title} className={`border-t-2 pt-4 ${i === 0 ? 'border-brand-600' : 'border-white/15'}`}>
               <p className="font-display text-sm font-extrabold text-brand-600">{String(i + 1).padStart(2, '0')}</p>
               <p className="mt-1 font-semibold">{title}</p>
-              <p className="text-sm text-ink/60">{text}</p>
+              <p className="text-sm text-white/60">{text}</p>
             </li>
           ))}
         </ol>
@@ -266,6 +268,7 @@ export default function Careers() {
           </div>
         )}
       </section>
+      </div>
     </>
   )
 }
