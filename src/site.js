@@ -66,7 +66,7 @@ export const branches = [
     open: true,
     // Exact pin for the map. In Google Maps: right-click the shop → click the numbers to copy them.
     // e.g. coords: [5.6512, -0.1987]. While null, the Contact page shows a directions card instead of a map.
-    coords: null,
+    coords: [5.656012, -0.208297], // from GhanaPost GPS GE-328-6296 (Westlands Avenue, Papao)
   },
   { id: 'madina', name: 'Madina Branch', area: 'Madina, Accra', open: false },
   { id: 'kwashieman', name: 'Kwashieman Branch', area: 'Kwashieman, Accra', open: false },
