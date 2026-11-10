@@ -39,13 +39,13 @@ export default function Home() {
       {/* ── Hero ───────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-white">
 
-        <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-5 pt-8 pb-16 lg:grid-cols-[1fr_1.15fr] lg:gap-10 lg:px-8 lg:pt-10 lg:pb-24">
+        <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-5 pt-8 pb-16 lg:grid-cols-[1.1fr_1fr] lg:gap-10 lg:px-8 lg:pt-5 lg:pb-12">
           <div>
             <p className="flex items-center gap-3 text-sm font-bold text-brand-600">
               <span className="h-0.5 w-8 rounded-full bg-brand-600" />
               Accra's trusted printing partner
             </p>
-            <h1 className="mt-5 font-display text-[3.4rem] leading-[0.95] font-extrabold tracking-tight sm:text-7xl lg:text-[5.5rem]">
+            <h1 className="mt-4 font-display text-[3.4rem] leading-[0.95] font-extrabold tracking-tight sm:text-7xl lg:text-[4.6rem]">
               Large.
               <br />
               Bold.
@@ -62,11 +62,11 @@ export default function Home() {
                 </svg>
               </span>
             </h1>
-            <p className="mt-9 max-w-lg text-lg leading-relaxed text-ink/70">
+            <p className="mt-7 max-w-lg text-lg leading-relaxed text-ink/70">
               From large-format banners to tender packages, branded wear and packaging, Farhat Printing Press
               prints for people, businesses and organisations across Accra.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-wrap gap-3">
               <a
                 href={waHref()}
                 target="_blank"
@@ -84,7 +84,7 @@ export default function Home() {
                 Order online
               </a>
             </div>
-            <ul className="mt-10 flex flex-wrap gap-x-7 gap-y-4">
+            <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-3">
               {trust.map(([Icon, label]) => (
                 <li key={label} className="flex items-center gap-2.5 text-sm font-medium text-ink/80">
                   <Icon className="h-6 w-6 text-brand-600" strokeWidth={1.75} aria-hidden="true" />
@@ -113,12 +113,12 @@ export default function Home() {
       </section>
 
       {/* ── Service strip ──────────────────────────────── */}
-      <section className="relative z-10 mx-auto -mt-10 max-w-7xl px-5 lg:px-8" aria-label="What we print">
+      <section className="relative z-10 mx-auto -mt-6 max-w-7xl px-5 lg:-mt-8 lg:px-8" aria-label="What we print">
         <ul className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-black/5 shadow-xl shadow-black/5 sm:grid-cols-4 lg:grid-cols-7">
           {strip.map(([Icon, title, note, to]) => (
             // last tile spans the leftover space on 2- and 4-column grids
             <li key={title} className={`bg-white ${title === 'Passport Photos' ? 'col-span-2 lg:col-span-1' : ''}`}>
-              <Link to={to} className="flex h-full items-start gap-3 p-4 hover:bg-brand-50 lg:flex-col lg:gap-2 lg:p-5">
+              <Link to={to} className="flex h-full items-start gap-3 p-4 hover:bg-brand-50 lg:flex-col lg:gap-1.5 lg:p-4">
                 <Icon className="h-7 w-7 shrink-0 text-brand-600" strokeWidth={1.6} aria-hidden="true" />
                 <span>
                   <span className="block text-sm font-semibold">{title}</span>
