@@ -215,7 +215,6 @@ export const nav = [
 
 export const footerLinks = [
   { href: '/solutions#tender', label: 'Tender documents' },
-  // Django's careers page. Works today; becomes app.farhatprintingpress.com/careers/ at cutover.
-  { href: 'https://farhatprintingpress.com/careers/', label: 'Careers', external: true },
+  { href: '/careers', label: 'Careers' },
   { href: '/contact#partners', label: 'Become a partner' },
 ]

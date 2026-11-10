@@ -6,6 +6,8 @@ import OurWork from './pages/OurWork.jsx'
 import About from './pages/About.jsx'
 import Contact from './pages/Contact.jsx'
 import NotFound from './pages/NotFound.jsx'
+import Careers from './pages/Careers.jsx'
+import CareerRole from './pages/CareerRole.jsx'
 
 export const routes = [
   {
@@ -18,6 +20,10 @@ export const routes = [
       { path: 'our-work', element: <OurWork /> },
       { path: 'about', element: <About /> },
       { path: 'contact', element: <Contact /> },
+      { path: 'careers', element: <Careers /> },
+      // Prerendered shell for role pages; vercel.json serves it for every /careers/<slug>
+      { path: 'careers/role', element: <CareerRole /> },
+      { path: 'careers/:slug', element: <CareerRole /> },
       // built to dist/404/index.html, then copied to dist/404.html for Vercel (see postbuild)
       { path: '404', element: <NotFound /> },
       { path: '*', element: <NotFound /> },
