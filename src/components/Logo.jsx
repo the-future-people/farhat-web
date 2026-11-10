@@ -1,17 +1,22 @@
 import { Link } from 'react-router-dom'
 
-// Mark from /public/farhat-mark.svg (placeholder until the real file is dropped in).
+// Bird mark (public/farhat-mark.svg, traced from the official logo) with the name stacked:
+// FARHAT on top, PRINTING PRESS in red underneath.
 export default function Logo({ onDark = false, className = '' }) {
   return (
     <Link
       to="/"
       aria-label="Farhat Printing Press home"
-      className={`flex shrink-0 items-center gap-2.5 ${className}`}
+      className={`flex shrink-0 items-center gap-2 ${className}`}
     >
-      <img src="/farhat-mark.svg" alt="" width="40" height="40" className="h-9 w-9" />
-      <span className="font-display text-[1.05rem] leading-none font-extrabold tracking-tight uppercase sm:text-[1.2rem]">
-        <span className={onDark ? 'text-white' : 'text-ink'}>Farhat</span>{' '}
-        <span className="text-brand-600">Printing Press</span>
+      <img src="/farhat-mark.svg" alt="" width="52" height="47" className="h-10 w-auto sm:h-11" />
+      <span className="font-display leading-none font-extrabold uppercase">
+        <span className={`block text-[1.35rem] tracking-tight sm:text-[1.5rem] ${onDark ? 'text-white' : 'text-ink'}`}>
+          Farhat
+        </span>
+        <span className="mt-0.5 block text-[0.62rem] tracking-[0.12em] text-brand-600 sm:text-[0.68rem]">
+          Printing Press
+        </span>
       </span>
     </Link>
   )
