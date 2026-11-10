@@ -39,7 +39,7 @@ export default function Home() {
       {/* ── Hero ───────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-white">
 
-        <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-5 pt-12 pb-16 lg:grid-cols-[1fr_1.15fr] lg:gap-10 lg:px-8 lg:pt-20 lg:pb-28">
+        <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-5 pt-8 pb-16 lg:grid-cols-[1fr_1.15fr] lg:gap-10 lg:px-8 lg:pt-10 lg:pb-24">
           <div>
             <p className="flex items-center gap-3 text-sm font-bold text-brand-600">
               <span className="h-0.5 w-8 rounded-full bg-brand-600" />
