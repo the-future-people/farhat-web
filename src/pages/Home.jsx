@@ -36,10 +36,13 @@ export default function Home() {
     <>
       <Seo description="Large-format printing, branding, packaging and everyday print in Accra. Send your print job on WhatsApp." />
 
+      {/* Hero + service strip fill the first screen on desktop: the strip sits at the bottom edge.
+          Capped so very tall screens don't stretch the hero. 5rem = header height. */}
+      <div className="lg:flex lg:min-h-[min(calc(100svh-5rem),58rem)] lg:flex-col">
       {/* ── Hero ───────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-white">
+      <section className="relative overflow-hidden bg-white lg:flex lg:flex-1 lg:items-center">
 
-        <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-5 pt-8 pb-16 lg:grid-cols-[1.1fr_1fr] lg:gap-10 lg:px-8 lg:pt-5 lg:pb-12">
+        <div className="relative mx-auto grid w-full max-w-7xl items-center gap-8 px-5 pt-8 pb-16 lg:grid-cols-[1.1fr_1fr] lg:gap-10 lg:px-8 lg:pt-5 lg:pb-12">
           <div>
             <p className="flex items-center gap-3 text-sm font-bold text-brand-600">
               <span className="h-0.5 w-8 rounded-full bg-brand-600" />
@@ -113,7 +116,7 @@ export default function Home() {
       </section>
 
       {/* ── Service strip ──────────────────────────────── */}
-      <section className="relative z-10 mx-auto -mt-6 max-w-7xl px-5 lg:-mt-8 lg:px-8" aria-label="What we print">
+      <section className="relative z-10 mx-auto -mt-6 w-full max-w-7xl px-5 lg:-mt-8 lg:px-8 lg:pb-5" aria-label="What we print">
         <ul className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-black/5 shadow-xl shadow-black/5 sm:grid-cols-4 lg:grid-cols-7">
           {strip.map(([Icon, title, note, to]) => (
             // last tile spans the leftover space on 2- and 4-column grids
@@ -129,6 +132,7 @@ export default function Home() {
           ))}
         </ul>
       </section>
+      </div>
 
       {/* ── How it works ───────────────────────────────── */}
       <section className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24">
