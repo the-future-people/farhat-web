@@ -21,14 +21,24 @@ const POLL_MS = 1500
 const SLOW_MS = 30000        // "This one's unusual, still checking…"
 const GIVE_UP_MS = 150000
 
+// The answer is the headline: once Octos has looked, the page leads with it.
 const VERDICT = {
-  yes: ['We can make this', 'bg-emerald-50 text-emerald-800'],
-  partly: ['We can do part of this', 'bg-amber-50 text-amber-800'],
-  no: ["We don't make this", 'bg-ink/5 text-ink/70'],
-  unsure: ["We're checking with the team", 'bg-amber-50 text-amber-800'],
+  yes: ['Yep, we can do this.', 'text-brand-600'],
+  partly: ['We can do part of this.', 'text-brand-600'],
+  no: ["Not this one, but we can help.", 'text-ink'],
+  unsure: ["Good one. We're checking with the team.", 'text-ink'],
 }
 
 const QUESTIONS = { yes: 'To firm up the price', partly: 'To firm up the price', unsure: 'To help us tell' }
+
+// "between 11:15am and 11:45am today at Westland (an estimate until the order is paid)"
+// → ["11:15am – 11:45am today at Westland", "An estimate until the order is paid"]
+function ready(text) {
+  if (!text) return ['We’ll confirm', '']
+  const [, main = text, aside = ''] = text.match(/^(.*?)\s*\((.*)\)\s*$/) || []
+  const when = main.replace(/^between /i, '').replace(/(\d(?:am|pm))\s+and\s+/i, '$1 – ')
+  return [when, aside ? aside[0].toUpperCase() + aside.slice(1) : '']
+}
 
 function price(r) {
   if (r.price_from && r.price_to && r.price_from !== r.price_to) return `${r.price_from} – ${r.price_to.replace('GHS ', '')}`
@@ -171,18 +181,12 @@ function Checking({ files, shown, findings, slow, done }) {
 
 function Answer({ look, onAgain }) {
   const r = look.result || {}
-  const [label, tone] = VERDICT[r.can_do] || VERDICT.unsure
   const wa = waHref(`Hi Farhat, about my photo ${look.code}`)
   return (
     <div className="rounded-3xl border border-black/10 bg-white p-6 sm:p-8">
       <p className="text-sm font-medium text-ink/55">What it is</p>
       <h2 className="mt-1 font-display text-2xl font-extrabold">{r.what || "We couldn't quite tell"}</h2>
       {r.detail && <p className="mt-2 text-ink/65">{r.detail}</p>}
-
-      <div className="mt-5 flex flex-wrap items-center gap-3">
-        <span className={`rounded-full px-3.5 py-1.5 text-sm font-semibold ${tone}`}>{label}</span>
-        {r.why && <span className="text-sm text-ink/60">{r.why}</span>}
-      </div>
 
       {r.can_do !== 'no' && r.can_do !== 'unsure' && (
         <div className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -193,7 +197,8 @@ function Answer({ look, onAgain }) {
           </div>
           <div className="rounded-2xl bg-paper px-5 py-4">
             <p className="text-sm text-ink/55">Ready</p>
-            <p className="mt-0.5 font-display text-xl font-bold">{r.ready ? r.ready.replace(/^between /, '') : 'We’ll confirm'}</p>
+            <p className="mt-0.5 font-display text-xl font-bold">{ready(r.ready)[0]}</p>
+            {ready(r.ready)[1] && <p className="mt-1 text-xs text-ink/50">{ready(r.ready)[1]}</p>}
           </div>
         </div>
       )}
@@ -304,6 +309,8 @@ export default function Ask() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
+  const verdict = phase === 'answer' && look?.result ? VERDICT[look.result.can_do] || VERDICT.unsure : null
+
   const again = () => { setFiles([]); setNote(''); setLook(null); setPhase('pick') }
 
   return (
@@ -317,14 +324,15 @@ export default function Ask() {
         <div className="mx-auto max-w-4xl px-5 pt-12 pb-16 lg:px-8 lg:pt-16 lg:pb-20">
           <p className="flex items-center gap-3 text-sm font-bold text-brand-600">
             <span className="h-0.5 w-8 rounded-full bg-brand-600" />
-            Not sure what to ask for?
+            {verdict ? 'Octos had a look' : 'Not sure what to ask for?'}
           </p>
-          <h1 className="mt-5 font-display text-4xl leading-[1.05] font-extrabold tracking-tight sm:text-5xl">
-            Show us, and we'll tell you
+          <h1 className={`mt-5 font-display text-4xl leading-[1.05] font-extrabold tracking-tight sm:text-5xl ${verdict ? verdict[1] : ''}`}>
+            {verdict ? verdict[0] : "Show us, and we'll tell you"}
           </h1>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink/70">
-            Upload a photo, short video or GIF of something like what you want. Octos, our assistant, says what it is,
-            whether we can make it, and roughly what it costs.
+            {verdict
+              ? look.result?.why
+              : 'Upload a photo, short video or GIF of something like what you want. Octos, our assistant, says what it is, whether we can make it, and roughly what it costs.'}
           </p>
           <div className="mt-10">
             {phase === 'pick' && (
