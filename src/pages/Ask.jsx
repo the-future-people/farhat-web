@@ -28,6 +28,8 @@ const VERDICT = {
   unsure: ["We're checking with the team", 'bg-amber-50 text-amber-800'],
 }
 
+const QUESTIONS = { yes: 'To firm up the price', partly: 'To firm up the price', unsure: 'To help us tell' }
+
 function price(r) {
   if (r.price_from && r.price_to && r.price_from !== r.price_to) return `${r.price_from} – ${r.price_to.replace('GHS ', '')}`
   if (r.price_from) return `From ${r.price_from}`
@@ -196,7 +198,7 @@ function Answer({ look, onAgain }) {
         </div>
       )}
 
-      {r.how?.length > 0 && (
+      {r.how?.length > 0 && r.can_do !== 'no' && (
         <div className="mt-6">
           <p className="text-sm font-semibold">How we'd make it</p>
           <p className="mt-1 text-ink/70">{r.how.join(' · ')}</p>
@@ -210,7 +212,7 @@ function Answer({ look, onAgain }) {
       )}
       {r.questions?.length > 0 && (
         <div className="mt-6">
-          <p className="text-sm font-semibold">{r.can_do === 'unsure' ? 'To help us tell' : 'To firm up the price'}</p>
+          <p className="text-sm font-semibold">{QUESTIONS[r.can_do] || 'A few questions'}</p>
           <ul className="mt-1 list-inside list-disc text-ink/70">
             {r.questions.map((q) => <li key={q}>{q}</li>)}
           </ul>
