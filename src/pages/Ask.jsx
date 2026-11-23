@@ -36,7 +36,8 @@ const QUESTIONS = { yes: 'To firm up the price', partly: 'To firm up the price',
 function ready(text) {
   if (!text) return ['We’ll confirm', '']
   const [, main = text, aside = ''] = text.match(/^(.*?)\s*\((.*)\)\s*$/) || []
-  const when = main.replace(/^between /i, '').replace(/(\d(?:am|pm))\s+and\s+/i, '$1 – ')
+  // Octos now says one time, "about 5:10pm today at Westland" (23 Nov 2026).
+  const when = main.replace(/^between /i, '').replace(/(\d(?:am|pm))\s+and\s+/i, '$1 – ').replace(/^about /i, 'About ')
   return [when, aside ? aside[0].toUpperCase() + aside.slice(1) : '']
 }
 
