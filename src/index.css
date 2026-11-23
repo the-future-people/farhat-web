@@ -27,3 +27,30 @@ body {
     font-size: 90%;
   }
 }
+
+/* ── The hummingbird (Ask page, 23 Nov 2026) ─────────────────────────────
+   Paper fills hide the hatching behind each part; the wings beat about their
+   shoulders while the bird hovers. Motion stops for people who ask for less. */
+.hb-paper { fill: #fff; }
+.hb-paper-line { stroke: #fff; }
+.hb-wing-near { transform-box: view-box; transform-origin: 122px 66px; animation: hb-beat-near 0.09s ease-in-out infinite alternate; }
+.hb-wing-far { transform-box: view-box; transform-origin: 127px 62px; animation: hb-beat-far 0.09s ease-in-out infinite alternate; }
+@keyframes hb-beat-near { from { transform: rotate(4deg); } to { transform: rotate(-58deg); } }
+@keyframes hb-beat-far { from { transform: rotate(-4deg); } to { transform: rotate(46deg); } }
+@keyframes hb-bob { 0%, 100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-6px) rotate(2deg); } }
+/* Around the photo: dart, pause as if studying it, dart again. */
+@keyframes hb-tour {
+  0%, 14% { left: -14%; top: 58%; }
+  24%, 38% { left: 30%; top: -26%; }
+  48%, 62% { left: 82%; top: 18%; }
+  72%, 86% { left: 40%; top: 80%; }
+  100% { left: -14%; top: 58%; }
+}
+@keyframes hb-face { 0% { transform: scaleX(1); } 48% { transform: scaleX(-1); } 86% { transform: scaleX(1); } }
+.hb-tour { animation: hb-tour 8s ease-in-out infinite; }
+.hb-face { animation: hb-face 8s step-end infinite; }
+.hb-bob { animation: hb-bob 1.2s ease-in-out infinite; }
+.hb-settled { left: 34%; top: -30%; }
+@media (prefers-reduced-motion: reduce) {
+  .hb-wing-near, .hb-wing-far, .hb-tour, .hb-face, .hb-bob { animation: none; }
+}

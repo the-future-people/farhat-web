@@ -8,6 +8,7 @@ import Contact from './pages/Contact.jsx'
 import NotFound from './pages/NotFound.jsx'
 import Careers from './pages/Careers.jsx'
 import CareerRole from './pages/CareerRole.jsx'
+import Ask from './pages/Ask.jsx'
 
 export const routes = [
   {
@@ -16,6 +17,8 @@ export const routes = [
     children: [
       { index: true, element: <Home /> },
       { path: 'services', element: <Services /> },
+      // "Not sure what to ask for?": show Octos a photo, it says what it is and if we make it
+      { path: 'ask', element: <Ask /> },
       { path: 'solutions', element: <Solutions /> },
       { path: 'our-work', element: <OurWork /> },
       { path: 'about', element: <About /> },

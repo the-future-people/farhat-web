@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import {
-  ArrowUpRight, BookOpen, Camera, Clock, Layers, MessageCircle, Newspaper, Package,
+  ArrowUpRight, BookOpen, Camera, Clock, ImagePlus, Layers, Newspaper, Package,
   PanelsTopLeft, Plus, Presentation, Printer, ShieldCheck, Shirt, ShoppingBag, Sticker, Store,
 } from 'lucide-react'
 import Seo from '../components/Seo.jsx'
@@ -116,20 +116,28 @@ export default function Services() {
           </div>
 
           <div className="rounded-3xl bg-brand-600 p-8 text-white shadow-xl shadow-brand-600/20 sm:p-10">
-            <MessageCircle className="h-9 w-9" strokeWidth={1.6} aria-hidden="true" />
+            <ImagePlus className="h-9 w-9" strokeWidth={1.6} aria-hidden="true" />
             <h2 className="mt-4 font-display text-2xl font-extrabold">Not sure what to ask for?</h2>
             <p className="mt-2 text-white/85">
-              Send a photo of something like it, or describe what it's for. We'll tell you what works, what it costs
+              Show us a photo of something like it. Octos tells you what it is, whether we can make it, what it costs
               and when it'll be ready.
             </p>
-            <a
-              href={waHref("Hi Farhat, I'm not sure what I need. Here's what it's for:")}
-              target="_blank"
-              rel="noopener"
-              className="mt-6 inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 font-semibold text-ink hover:bg-brand-50"
-            >
-              Ask on WhatsApp
-            </a>
+            <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
+              <Link
+                to="/ask"
+                className="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 font-semibold text-ink hover:bg-brand-50"
+              >
+                Upload a photo
+              </Link>
+              <a
+                href={waHref("Hi Farhat, I'm not sure what I need. Here's what it's for:")}
+                target="_blank"
+                rel="noopener"
+                className="text-sm font-semibold text-white/90 underline underline-offset-4 hover:text-white"
+              >
+                or describe it on WhatsApp
+              </a>
+            </div>
           </div>
         </div>
       </section>
